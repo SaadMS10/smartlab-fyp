@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Attendance System</title>
+</head>
+<style>
+body{
+	padding:0;
+	margin:20px 0px 0px 0px;
+	background:"{{ url_for('static',filename='assets/img/bg2.jpg') }}";
+
+	background-color: burlywood;
+	}
+h1 {
+  font-family: 'Comfortaa', cursive;
+  color:aqua;
+}
+.jumbotron h1 {
+  color: #353535;
+}
+
+#sec{
+	width:75%;
+	height:350px;
+	background-size:cover;
+	}
+table#menu td{
+	background:#6FF;
+	font-weight:bold;
+	}
+table#menu td:hover{
+	background:#FF0;
+	border:#FFF 3px solid;
+	}
+input{
+	height:70px;
+	width:75%;
+	font-size:36px;
+	font-weight:bold;
+	background:#6CF;
+	}
+input:hover{
+	border:#000 2px solid;}
+a{
+	text-decoration:none;}
+</style>
+<body>
+
+<div align="center">
+<section id="sec">
+
+</section>
+	</br>
+	<div align="center">
+		<img src="{{ url_for('static',filename='assets/img/logo-white.png') }}" />
+
+<table width="1000" height="20px" border="0">
+  <tr>
+    <td align="center"><form action="/admin_login" method="post">
+    <input name="Admin" type="submit" value="Admin Login" />
+    </form></td>
+    <td align="center"><form action="login" method="post">
+    <input name="Parent" type="submit" value="Teacher Login" />
+    </form></td>
+  </tr>
+</table>
+
+
+
+</div>
+</body>
+</html>

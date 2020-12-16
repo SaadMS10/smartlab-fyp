@@ -1,0 +1,13 @@
+{
+  "params":
+  {
+    "local_server":"True",
+    "local_uri": "mysql://root:@localhost/fyp",
+    "prod_uri":"mysql://root:@localhost/fyp",
+    "admin_user":"saadkhalid@gmail.com",
+    "admin_pass":"Error1234"
+    
+  }
+}
+
+

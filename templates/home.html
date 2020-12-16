@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ATTENDANCE SYSTEM</title>
+   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+   <!--[if IE]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <![endif]-->
+  <!-- GLOBAL STYLES -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/plugins/bootstrap/css/bootstrap.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/main.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/theme.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/MoneAdmin.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/plugins/Font-Awesome/css/font-awesome.css') }}" />
+  <!--END GLOBAL STYLES -->
+
+  <!-- PAGE LEVEL STYLES -->
+  <link href="{{ url_for('static',filename='assets/css/layout2.css') }}" rel="stylesheet" />
+     <link href="{{ url_for('static',filename='assets/plugins/flot/examples/examples.css') }}" rel="stylesheet" />
+     <link rel="stylesheet" href="{{ url_for('static',filename='assets/plugins/timeline/timeline.css') }}" />
+    
+</head>
+<style
+>
+@import url(https://fonts.googleapis.com/css?family=Comfortaa);
+
+
+#heading {
+  position: sticky;
+  top: 0;
+  background-color: #333;
+  z-index: 7;
+  padding: 15px 0px;
+  margin-left: 15px;
+}
+
+.inputText {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #ffd31d;
+  width: 30%;
+  margin: 15px;
+  outline: none;
+}
+
+
+.btn {
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid #ffd31d;
+  background-color: #ffd31d;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  width:150px;
+  margin-left: 40%;
+}
+
+.btn:hover{
+  border: 2px solid #333;
+  box-shadow: inset 0 0 5px red;
+}
+h1 {
+
+  font-family: 'Comfortaa', cursive;
+  color: #FFF;
+}
+.jumbotron h1 {
+  color: #353535;
+}
+
+
+footer {
+  margin-bottom: 0 !important;
+  margin-top: 80px;
+}
+footer p {
+  margin: 0;
+  padding: 0;
+}
+span.icon {
+  margin: 0 5px;
+  color: #D64541;
+}
+h2 {
+  color: #BDC3C7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.mrng-60-top {
+  margin-top: 60px;
+}
+
+a.animated-button:link:hover {
+  color: black;
+  background-color: white;
+}
+
+
+.button {
+  border: 2px solid #D24D57;
+  width:150px;
+ 
+
+}
+
+
+
+
+  </style>
+
+<body>
+    <!-- MAIN WRAPPER -->
+    <div id="wrap" >
+        
+
+     <!-- HEADER SECTION -->
+     <div id="top">
+
+      <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-top: 10px;">
+          <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle">
+              <i class="icon-align-justify"></i>
+          </a>
+          <!-- LOGO SECTION -->
+          <header class="navbar-header">
+
+              <a href="/home" class="navbar-brand">
+              <img   src="{{ url_for('static',filename='assets/img/smart.png') }}"   alt="" />
+                  
+                  </a>
+          </header>
+          <!-- END LOGO SECTION -->
+          <ul class="nav navbar-top-links navbar-right">
+
+            
+
+              <!--ADMIN SETTINGS SECTIONS -->
+
+              <li class="dropdown">
+                <a href="/logout"><i class="icon-signout"></i> Logout </a>
+
+  
+
+              </li>
+              <!--END ADMIN SETTINGS -->
+          </ul>
+
+      </nav>
+
+  </div>
+  <!-- END HEADER SECTION -->
+
+<div class="jumbotron text-center">
+
+  <div class="container">
+    
+    <h1>ATTENDANCE IS LIVE</h1>
+    <p style="color: black;">Initiated By {{usr}}</p>
+    
+  </div>
+</div>
+<div class="container"> 
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h2 style="color: black;">Here We go !</h2>
+    </div>
+  </div>
+  <form action="/model" method="POST">
+    <div class="form-group">
+      <label >Enter Course ID</label>
+      <input type="number" class="form-control" name="courses" placeholder="Enter Course ID"  autofocus required autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label >Enter Week No</label>
+      <input type="number" class="form-control" name="week" placeholder="Enter week" required>
+    </div>
+    <div > 
+      <button class="btn" type="submit" >On The Camera</button> 
+      <br> </br>
+
+  </form>
+  <a href='/attendance/0' class="btn btn-sm animated-button victoria-three">Identify Students</a> 
+  <br>   </br>
+  <a href='/panel' class="btn btn-sm animated-button victoria-two">Off the Panel</a> </div>
+  <p> {{pan}}</p>
+
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script> 
+	function validate() { 
+		var user= document.forms["login"]["username"];
+		var password= document.forms["login"]["password"]; 
+		if (user.value== "") {    
+			alert("No Email Found");   
+			user.focus();
+			return false;   
+		} 
+		if (password.value == "")                    	
+    {
+        window.alert("Please enter your password");
+        password.focus();
+        return false;
+    }
+	return true;
+	} 
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin Login</title>
+<style>
+body{
+	padding:0;
+	margin:0;
+	background:"{{ url_for('static',filename='assets/img/bg1.jpg') }}";
+	background-size:cover;
+	}
+img{
+	width:10%;
+	margin:0px;
+	margin-top:3%;
+	}
+h1{
+	font-size:50px;
+	margin-top:-10px;
+	color: black;
+	}
+input[type="email"]{
+	margin-top:15px;
+	width:80%;
+	height:30px;
+	font-size:16px;
+	border:#FFF 2px solid;
+	text-align:center;}
+input[type="password"]{
+	margin-top:30px;
+	width:80%;
+	height:30px;
+	font-size:16px;
+	border:#FFF 2px solid;
+	text-align:center;}
+	
+#sec{
+	margin-top:-10px;
+	width:40%;
+	height:100px;
+	box-shadow:2px 3px 20px 10px #333;
+	padding:30px;
+	background:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2));
+	}
+
+input[type="submit"]{
+	width:19%;
+	height:70px;
+	font-size:36px;
+	font-weight:bold;
+	border:none;
+	background:#3CACFF;
+	color:#FFF;
+	}
+input[type="submit"]:hover{
+	border:#FFF 3px solid;
+
+}
+</style>
+</head>
+
+<body>
+<div align="center">
+<img src="{{ url_for('static',filename='assets/img/logo-white.png') }}" />
+
+<h1>Admin Login</h1>
+<br />
+<form name="login" method="post" action="/admin_login" onsubmit="return validate()">
+<section id="sec">
+<input type="email" placeholder="Type Email" name="username" autofocus autocomplete="off">
+<input type="password" placeholder="Type Password" name="password" />
+</section><br />
+<br /><br />
+<input type="submit" value="Login" name="admin_btn" />
+
+</form>
+</div>
+</body>
+</html>

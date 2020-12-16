@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="UTF-8" />
+    <title>SMART LAB ADMIN PANEL </title>
+     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+     <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <!-- GLOBAL STYLES -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/plugins/bootstrap/css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/theme.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/MoneAdmin.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/plugins/Font-Awesome/css/font-awesome.css') }}" />
+    <!--END GLOBAL STYLES -->
+
+    <!-- PAGE LEVEL STYLES -->
+    <link href="{{ url_for('static',filename='assets/css/layout2.css') }}" rel="stylesheet" />
+       <link href="{{ url_for('static',filename='assets/plugins/flot/examples/examples.css') }}" rel="stylesheet" />
+       <link rel="stylesheet" href="{{ url_for('static',filename='assets/plugins/timeline/timeline.css') }}" />
+    <!-- END PAGE LEVEL  STYLES -->
+     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+    <!-- END HEAD -->
+
+    <!-- BEGIN BODY -->
+<body class="padTop53 " >
+
+    <!-- MAIN WRAPPER -->
+    <div id="wrap" >
+        
+
+        <!-- HEADER SECTION -->
+        <div id="top">
+
+            <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-top: 10px;">
+                <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle">
+                    <i class="icon-align-justify"></i>
+                </a>
+                <!-- LOGO SECTION -->
+                <header class="navbar-header">
+
+                    <a href="/" class="navbar-brand">
+                    <img src="{{ url_for('static',filename='assets/img/logo.png') }}" alt="" />
+                        
+                        </a>
+                </header>
+                <!-- END LOGO SECTION -->
+                <ul class="nav navbar-top-links navbar-right">
+
+                  
+
+                    <!--ADMIN SETTINGS SECTIONS -->
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-user">
+                            
+                            <li class="divider"></li>
+                            <li><a href="/logout"><i class="icon-signout"></i> Logout </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <!--END ADMIN SETTINGS -->
+                </ul>
+
+            </nav>
+
+        </div>
+        <!-- END HEADER SECTION -->
+
+
+
+        <!-- MENU SECTION -->
+       <div id="left" >
+            <div class="media user-media well-small">
+                <a class="user-link" href="#">
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="{{ url_for('static',filename='assets/img/profile.jpg') }}" />
+                </a>
+                <br />
+                <div class="media-body">
+                    <h5 class="media-heading"> {{usr}}</h5>
+                    <ul class="list-unstyled user-info">
+                        
+                        <li>
+                             <a class="btn btn-success btn-xs btn-circle" style="width: 10px;height: 12px;"></a> Online
+                           
+                        </li>
+                       
+                    </ul>
+                </div>
+                <br />
+            </div>
+
+            <ul id="menu" class="collapse">
+
+                
+                <li class="panel active">
+                    <a href="/dashboard" >
+                        <i class="icon-table"></i> Dashboard
+	   
+                       
+                    </a>                   
+                </li>
+
+
+
+
+                <li><a href="/instructor"><i class="icon-table"></i> Instructor </a></li>
+               
+
+        </div>
+        <!--END MENU SECTION -->
+
+
+
+        <!--PAGE CONTENT -->
+        <div id="content">
+
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-12">
+
+
+                        <h2> EDIT STUDENT DATA</h2>
+
+
+
+                    </div>
+                </div>
+
+                <hr />
+
+
+                <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Edit Database
+                        </div>
+                        <form name="editstudent" id="editstudent" action = "/editstudent/{{s[0]}}" method="post" onsubmit="return validate()">
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Student ID</label>
+                <input type="number" class="form-control" placeholder="Student No" name="student_id" required data-validation-required-message="Please enter your id." value="{{s[0]}}" readonly>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Student Name</label>
+                <input type="text" class="form-control" placeholder="Student Name" name="student_name" required data-validation-required-message="Please enter your name" value="{{s[1]}}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                  <label>CNIC</label>
+                  <input type="number" class="form-control" placeholder="CNIC"  name="cnic" required data-validation-required-message="Please enter your section" value="{{s[2]}}">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <br>
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                  <label>Email</label>
+                  <input type="email" class="form-control" placeholder="Email"  name="email" required data-validation-required-message="Please enter your section" value="{{s[3]}}">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <br>
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                  <label>Student No</label>
+                  <input type="number" class="form-control" placeholder="Student No"  name="student_no" required data-validation-required-message="Please enter your section" value="{{s[4]}}">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <br>
+
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                  <label>Department</label>
+                  <input type="text" class="form-control" placeholder="Department"  name="department" required data-validation-required-message="Please enter your department" value="{{s[5]}}">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <br>
+			<div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Section</label>
+                <input type="text" class="form-control" placeholder="Section"  name="section" required data-validation-required-message="Please enter your section" value="{{s[6]}}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <br>
+            <div id="success"></div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" id="sendMessageButton">Done</button>
+            </div>
+          </form>
+		  
+			
+                       
+                            </div>
+                           
+                        </div>
+                    </div>
+      
+            
+       <!--END PAGE CONTENT -->
+
+ 
+          
+            
+         
+
+        </div>
+         <!-- END RIGHT STRIP  SECTION -->
+    </div>
+
+    <!--END MAIN WRAPPER -->
+
+
+
+    <!-- GLOBAL SCRIPTS -->
+    <script src="{{ url_for('static',filename='assets/plugins/jquery-2.0.3.min.js') }}"></script>
+     <script src="{{ url_for('static',filename='assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
+    <!-- END GLOBAL SCRIPTS -->
+
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="{{ url_for('static',filename='assets/plugins/flot/jquery.flot.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/plugins/flot/jquery.flot.resize.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/plugins/flot/jquery.flot.time.js') }}"></script>
+     <script  src="{{ url_for('static',filename='assets/plugins/flot/jquery.flot.stack.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/js/for_index.js') }}"></script>
+    <script>
+    function validate()                                	
+    {
+        var name = document.forms["editstudent"]["student_name"];           	
+        var cnic = document.forms["editstudent"]["cnic"];	
+        var email = document.forms["editstudent"]["email"]; 
+        var phone =  document.forms["editstudent"]["student_no"]; 
+        var department = document.forms["editstudent"]["department"]; 
+        var section = document.forms["editstudent"]["section"]; 
+       
+        if (name.value == "")                              	
+        {
+            window.alert("Please enter your name.");
+            name.focus();
+            return false;
+        }
+       
+        if (cnic.value == "")                           	
+        {
+            window.alert("Please enter your cnic.");
+            name.focus();
+            return false;
+        }
+           
+        if (email.value == "")                               	
+        {
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+       
+        if (email.value.indexOf("@", 0) < 0)             	
+        {
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+       
+        if (email.value.indexOf(".", 0) < 0)             	
+        {
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+       
+        if (phone.value == "")                       	
+        {
+            window.alert("Please enter your telephone number.");
+            phone.focus();
+            return false;
+        }
+       
+        if (department.value == "")                    	
+        {
+            window.alert("Please enter your department");
+            password.focus();
+            return false;
+        }
+        if (section.value == "")                    	
+        {
+            window.alert("Please enter your section");
+            password.focus();
+            return false;
+        }
+       
+     
+       
+        return true;
+    }</script>
+   
+    <!-- END PAGE LEVEL SCRIPTS -->
+
+
+</body>
+
+    <!-- END BODY -->
+</html>
